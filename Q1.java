@@ -1,4 +1,4 @@
-package QUESTION3;
+package QUESTION2;
 
 import java.util.List;
 
@@ -12,8 +12,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-
-
 public class Q1 
 {
     public static void main( String[] args ) throws InterruptedException
@@ -32,20 +30,19 @@ public class Q1
 			System.out.println("Title not matched");
 		}
 		
-		driver.findElement(By.id("nav-link-accountList")).click();
     	
     	
-		driver.findElement(By.id("ap_email")).sendKeys("+919363147550");
-		driver.findElement(By.id("ap_email")).sendKeys(Keys.ENTER);
-		driver.findElement(By.id("ap_password")).sendKeys("naruto");
-		driver.findElement(By.id("ap_password")).sendKeys(Keys.ENTER);
-		Thread.sleep(2000);
-		String name=driver.findElement(By.id("nav-link-accountList-nav-line-1")).getText();
-		if(name.equals("Hello,kamalesh")) {
-			System.out.println("Successfully, signed in");
-		}else {
-			System.out.println("Sign in failed");
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys("phone");
+		driver.findElement(By.id("twotabsearchtextbox")).sendKeys(Keys.ENTER);
+		System.out.println("Searched Item successfully");
+		
+		driver.findElement(By.id("a-autoid-0-announce")).click();
+List<WebElement>li=driver.findElements(By.xpath("//*[@id=\"octopus-dlp-asin-stream\"]/ul/li[2]/span/div/div[2]/div[1]/a"));
+		for(WebElement link:li) {
+			System.out.println(link.getText());
 		}
+		System.out.println("User is able to filter by search");
+
 		System.out.println("Testing Ended");
 		
     	driver.quit();
